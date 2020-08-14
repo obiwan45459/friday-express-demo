@@ -1,41 +1,20 @@
 const express = require('express')
 const router = express.Router()
-
-const gradesInfo = [
-  { 
-    id: 1,
-    name: 'student1',
-    details: 'details on student1',
-    grades: 75
-  },
-  { 
-    id: 2,
-    name: 'student2',
-    details: 'details on student2',
-    grades: 85
-
-  },
-  { 
-    id: 3,
-    name: 'student3',
-    details: 'details on student3',
-    grades: 95
-
-  }
-]
+const students = require('./students')
 
 
+router.get('/:id', (req, res) => {
+  const studentId = parseInt(req.params.id)
+  console.log(req.params)
+  const student = students.studentInfo.find(student => students.studentInfo.id === studentId)
+  
+  res.json(students.grades)
+})
 
-router.post('/:', (req, res) => {
-    res.send('SUCCESS: you added '+req.params.id)
+
+router.post('/:id/:grades', (req, res) => {
+    res.send('SUCCESS: you added '+req.params.id +'Grades: '+req.params.grades)
   })
 
-  router.post('/register', (req, res) => {
-    res.send('SUCCESS: ')
-  })
-
-// router.post('/', (req, res) => {
-//   res.send('your basket has been uploaded')
-// })
 
 module.exports = router

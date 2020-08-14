@@ -25,7 +25,7 @@ const studentInfo = [
 ]
 
 router.get('/', (req, res) => {
-  res.send('basket route root rite?')
+  res.send(studentInfo)
 })
 
 router.get('/:id', (req, res) => {
@@ -36,24 +36,5 @@ router.get('/:id', (req, res) => {
   res.json(student)
 })
 
-router.get('grades/:id', (req, res) => {
-    const studentId = parseInt(req.params.id)
-    console.log(req.params)
-    const student = studentInfo.find(student => student.id === studentId)
-    
-    res.json(student.grades)
-})
-
-router.post('/grades', (req, res) => {
-    res.send('SUCCESS: you added '+req.params.id)
-  })
-
-  router.post('/register', (req, res) => {
-    res.send('SUCCESS: ')
-  })
-
-// router.post('/', (req, res) => {
-//   res.send('your basket has been uploaded')
-// })
 
 module.exports = router

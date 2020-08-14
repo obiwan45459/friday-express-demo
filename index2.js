@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 
 const studentsRouter = require('./routes/students')
+const gradesRouter = require('./routes/grades')
+const registerRouter = require('./routes/register')
 
 const PORT = 8080
 
@@ -12,6 +14,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/students', studentsRouter)
+app.use('/grades', gradesRouter)
+app.use('/register', registerRouter)
 
 app.listen(PORT)
 
